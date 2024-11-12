@@ -1,7 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="goku.MainPage">
+             x:Class="goku.MainPage"
+             Shell.NavBarIsVisible="False">
+
+       <Grid>
+  <HorizontalStackLayout x:Name="HorizontalDoFundo">
+
+                      <Image Source="fundo.png"
+                            Aspect="AspectFill"/>
+
+                     <Image Source="fundo.png"
+                            Aspect="AspectFill"/>
+
+                     <Image Source="fundo.png"
+                            Aspect="AspectFill"/>
+
+              </HorizontalStackLayout>
+
+
+              <HorizontalStackLayout x:Name="HorizontalDaBolaDoDragao">
+
+                    <Image Source="nuvem.png"
+                            Opacity="0.4"
+                            VerticalOptions="StartAndExpand"
+                            HeightRequest="600"/>
+
+                     <Image Source="nuvem.png"
+                            Opacity="0.4"
+                            VerticalOptions="StartAndExpand"
+                            HeightRequest="600"/>
+
+                     <Image Source="nuvem.png"
+                            Opacity="0.4"
+                            VerticalOptions="StartAndExpand"
+                            HeightRequest="600"/>
+              </HorizontalStackLayout>
+
+              <HorizontalStackLayout x:Name="HorizontalMontanha">
+
+                      <Image Source="montanhas.png"
+                            VerticalOptions="Fill"
+                             Margin="10,0,0,20"
+                              HeightRequest="800"/>
+
+                     <Image Source="montanhas.png"
+                            VerticalOptions="Fill"
+                            Margin="10,0,0,20"
+                             HeightRequest="800"/>
+
+                     <Image Source="montanhas.png"
+                            VerticalOptions="Fill"
+                            Margin="10,0,0,20"
+                             HeightRequest="800"/>
+              </HorizontalStackLayout>
+
+
+            
+
+              <HorizontalStackLayout x:Name="HorizontalChao">
+
+                      <Image Source="chao.png"
+                            VerticalOptions="End"
+                            Margin="0,200,0,0"/>
+
+                     <Image Source="chao.png"
+                            VerticalOptions="End"
+                            Margin="0,200,0,0"/>
+
+                     <Image Source="chao.png"
+                            VerticalOptions="End"
+                            Margin="0,200,0,0"/>
+
+              </HorizontalStackLayout>
+
+              <Image x:Name="imgJogador"
+                     VerticalOptions="End"
+                     Margin="0,0,0,75"
+                     HeightRequest="150"
+                     WidthRequest="150"
+                     HorizontalOptions="Start"
+                     Aspect="Fill"/>
+
+       </Grid>
+
+
+
 
    
 </ContentPage>
