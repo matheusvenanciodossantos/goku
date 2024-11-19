@@ -1,4 +1,6 @@
-﻿using Goku;
+using Goku;
+
+using FFImageLoading.Maui;
 
 namespace goku;
 
@@ -8,11 +10,25 @@ public partial class MainPage : ContentPage
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	private bool IsDead = false;
 
-	private bool IsJumping = false;
+	private bool TaPulando = false;
+
+	private bool TaNoChao = true;
+
+	private bool TaNoAr = false;	
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	const int Fps = 25;
+	const int ForcaDaGravidade=6;
+	const int ForcaPulo = 8;
+	const int MaxTempoPulando =6;
+	const int MaxTempoNoAr =4;
+
+	 protected CachedImageView ImageView;
+
+
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -22,14 +38,21 @@ public partial class MainPage : ContentPage
 	private int Speed2 = 0;
 
 	private int Speed3 = 0;
-
-
+    
 
 	private int CharacterSpeed = 0;
 
 	private int WindowWidth = 0;
 
 	private int WindowHeight = 0;
+
+	private int TempoPulando = 0;
+
+	private int TempoNoAr = 0;
+
+
+
+
 
 	Jogador jogador;
 
@@ -131,13 +154,66 @@ public partial class MainPage : ContentPage
 	async Task Drawn()
 	{
 		while (!IsDead)
+		if (!TaPulando&&TaNoAr)
 		{
+			AplicaGravidade();
 			jogador.Desenha();
 			GerenciaCenarios();
 			await Task.Delay(Fps);
 		}
+		else
+		AplicaPulo();
+		await Task.Delay(Fps);
 	}
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	void AplicaGravidade()
+		{
+		if (jogador.GetY() < 0)
+		{
+			jogador.MoveY(ForcaDaGravidade);
+		}	
+		else if (jogador.GetY()>= 0)
+		{
+			jogador.SetY(0);
+			TaNoChao = true;
+		}
+	}
+
+void AplicaPulo()
+	{
+		TaNoChao=false;
+		if (TaPulando&&TempoPulando>=MaxTempoPulando)
+			{
+				TaPulando=false;
+				TaNoAr=true;
+				TempoNoAr=0;
+			}
+	 	else if (TaNoAr&&TempoNoAr>=MaxTempoNoAr)
+		{
+			TaPulando=false;
+			TaNoAr=false;
+			TempoPulando=0;
+			TempoNoAr=0;
+		}
+		else if (TaPulando&&TempoPulando<MaxTempoPulando)
+		{
+		jogador.MoveY(-ForcaPulo);
+		TempoPulando++;
+		}
+		else if (TaNoAr)
+		{
+			TempoNoAr++;
+		}
+	
+	}
+
+	void OnGridTapped(object sender, TappedEventArgs e)
+	{
+		if (TaNoChao)
+		TaPulando=true;
+	}
+
 
 }
 

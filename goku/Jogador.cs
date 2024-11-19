@@ -1,10 +1,11 @@
+using FFImageLoading.Maui;
 namespace Goku
 {
     public delegate void CallBack();
 
     public class Jogador : Animation
     {
-        public Jogador(Image a) : base(a)
+        public Jogador(CachedImageView a) : base(a)
         {
             for (int numero = 1; numero <= 4; numero++)
                 Animacao1.Add($"goku{numero:D2}.png");
@@ -27,5 +28,20 @@ namespace Goku
             SetAnimationActive(1);
             StartGame();
         }
+          public void MoveY(int y)
+        {
+            compImage.TranslationY += y;
+        }
+
+        public double GetY()
+        {
+            return compImage.TranslationY;
+        }
+
+        public void SetY(double a)
+        {
+            compImage.TranslationY = a;
+        }
+
     }
 }

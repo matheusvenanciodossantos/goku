@@ -1,23 +1,20 @@
+
+using FFImageLoading.Maui;
+
 namespace Goku
 {
     public class Animation
     {
-        // Listas para armazenar os quadros das animações
+    
         protected List<string> Animacao1 = new List<string>();
         protected List<string> Animacao2 = new List<string>();
         protected List<string> Animacao3 = new List<string>();
-
-        // Flags para controlar o loop da animação e a animação ativa
         protected bool Loop = true;
         protected int AnimacaoAtiva = 1;
-        protected Image compImage;
-
-        // Controle de parada da animação
+        protected CachedImageView compImage;
         private bool Parado = true;
         private int QuadroAtual = 1;
-
-        // Construtor que recebe a imagem
-        public Animation(Image image)
+        public Animation(CachedImageView image)
         {
             compImage = image;
         }

@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="goku.MainPage"
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              Shell.NavBarIsVisible="False">
 
        <Grid>
+       
+         
   <HorizontalStackLayout x:Name="HorizontalDoFundo">
 
                       <Image Source="fundo.png"
@@ -74,13 +77,20 @@
 
               </HorizontalStackLayout>
 
-              <Image x:Name="imgJogador"
-                     VerticalOptions="End"
-                     Margin="0,0,0,75"
-                     HeightRequest="150"
-                     WidthRequest="150"
-                     HorizontalOptions="Start"
-                     Aspect="Fill"/>
+<ffimageloading:CachedImageView    
+                                   x:Name="imgJogador"
+                                   CacheDuration="365"
+                                   CacheType ="All"
+                                   VerticalOptions="End"
+                                   Margin="0,0,0,210"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   HorizontalOptions="Start"
+                                   Aspect="Fill"/>
+
+              <Grid.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="OnGridTapped"/>
+              </Grid.GestureRecognizers>
 
        </Grid>
 
