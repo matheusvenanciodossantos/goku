@@ -52,7 +52,7 @@ public partial class MainPage : ContentPage
 
 
 
-
+ Inimigos inimigos;
 
 	Jogador jogador;
 
